@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hope & Light — A Christian Community</title>
+  <meta name="description" content="Hope & Light — a welcoming Christian community. Learn about our beliefs, find resources, and connect with us." />
+
+  <!-- Theme colors -->
+  <style>
+    :root{
+      --blue-500: #2b6cb0;   /* primary blue */
+      --blue-300: #60a5fa;
+      --pink-500: #ec4899;   /* primary pink */
+      --pink-300: #fda4bf;
+      --bg: linear-gradient(180deg, rgba(43,108,176,0.08), rgba(236,72,153,0.02));
+      --card-bg: rgba(255,255,255,0.85);
+      --glass: rgba(255,255,255,0.6);
+      --muted: #5b6270;
+      --radius: 14px;
+      --max-width: 1100px;
+      --shadow: 0 8px 30px rgba(39,44,55,0.08);
+      --accent-gradient: linear-gradient(135deg, var(--blue-500), var(--pink-500));
+      --focus-outline: 3px solid rgba(99,102,241,0.18);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 18px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    /* Page container */
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92));
+      border-radius:20px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(6px) saturate(120%);
+      border:1px solid rgba(17,24,39,0.04);
+    }
+
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+
+    /* Logo */
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      display:grid;
+      place-items:center;
+      background:var(--accent-gradient);
+      color: #fff;
+      border-radius:12px;
+      box-shadow: 0 6px 18px rgba(43,108,176,0.16);
+      flex:0 0 56px;
+      font-weight:700;
+    }
+    .brand h1{font-size:18px;margin:0;line-height:1}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .nav-link{
+      background:transparent;
+      border:0;
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      color:var(--blue-500);
+    }
+    .nav-link:hover, .nav-link:focus{outline: none; box-shadow: var(--focus-outline);}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:20px;
+      align-items:center;
+      margin-bottom:26px;
+    }
+    .hero-left{
+      padding:18px;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(43,108,176,0.12), rgba(236,72,153,0.08));
+      color:var(--blue-500);
+      font-weight:700;
+      font-size:12px;
+      margin-bottom:14px;
+    }
+    .hero h2{
+      margin:0 0 12px 0;
+      font-size:34px;
+      line-height:1.05;
+      background: -webkit-linear-gradient(#0f172a, #0f172a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .lead{color:var(--muted); margin-bottom:18px; max-width:48ch;}
+
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+    .btn{
+      padding:12px 16px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      font-size:15px;
+    }
+    .btn-primary{
+      background:var(--accent-gradient);
+      color:white;
+      box-shadow: 0 8px 20px rgba(99,102,241,0.12);
+    }
+    .btn-outline{
+      background:transparent;
+      border:2px solid rgba(43,108,176,0.12);
+      color:var(--blue-500);
+    }
+
+    /* Hero card (right) */
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border-radius:16px;
+      padding:16px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(17,24,39,0.03);
+    }
+    .sermon{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .sermon img{width:68px;height:68px;border-radius:10px;object-fit:cover}
+    .sermon h4{margin:0;font-size:15px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Main content grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
+      align-items:start;
+    }
+
+    /* Cards */
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(39,44,55,0.06);
+      border:1px solid rgba(17,24,39,0.03);
+    }
+    .section-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .section-title h3{margin:0;font-size:18px}
+    .pill{
+      padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;
+      background:linear-gradient(90deg, rgba(43,108,176,0.12), rgba(236,72,153,0.06));
+      color:var(--blue-500);
+    }
+
+    /* Faith beliefs list */
+    .beliefs{display:grid;gap:10px}
+    .belief{
+      display:flex;gap:12px;align-items:flex-start;
+    }
+    .mark{
+      width:42px;height:42px;border-radius:10px;display:grid;place-items:center;color:#fff;
+      background:linear-gradient(135deg,var(--blue-500),var(--pink-500));
+      flex:0 0 42px;font-weight:700;
+      font-size:18px;
+    }
+
+    /* Sidebar */
+    aside .card + .card{margin-top:14px}
+
+    /* Footer */
+    footer{
+      margin-top:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .socials{display:flex;gap:8px}
+    .socials a{
+      display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:transparent;border:1px solid rgba(43,108,176,0.06);
+      text-decoration:none;color:var(--blue-500);font-weight:700;
+    }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero, .grid{grid-template-columns:1fr}
+      body{padding:18px}
+      .site{padding:18px;border-radius:12px}
+      .logo{width:48px;height:48px}
+    }
+  </style>
+</head>
+<body>
+  <div class="site" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="Hope and Light - Home">
+        <div class="logo" aria-hidden="true">
+          ✝︎
+        </div>
+        <div>
+          <h1>Hope &amp; Light</h1>
+          <p>Faith • Community • Compassion</p>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <button class="nav-link" onclick="document.getElementById('beliefs').scrollIntoView({behavior:'smooth'})">Beliefs</button>
+        <button class="nav-link" onclick="document.getElementById('community').scrollIntoView({behavior:'smooth'})">Community</button>
+        <button class="nav-link" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">Resources</button>
+        <button class="nav-link" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Connect</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <div class="eyebrow" aria-hidden="true">Welcome</div>
+        <h2>Following Jesus, serving our neighbors, sharing hope.</h2>
+        <p class="lead">Hope &amp; Light is a local Christian community centered on the Gospel — worship, discipleship, and caring for those in need. All ages and backgrounds are welcome.</p>
+
+        <div class="cta-row" role="group" aria-label="Primary calls to action">
+          <button class="btn btn-primary" onclick="alert('Thanks for wanting to visit — replace this with a real RSVP action')">Plan a Visit</button>
+          <button class="btn btn-outline" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">Explore Resources</button>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Upcoming sermon">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-weight:800">Upcoming Sermon</div>
+          <div style="font-size:13px;color:var(--muted)">Sunday • 10:00 AM</div>
+        </div>
+
+        <div class="sermon" style="margin-bottom:12px">
+          <!-- inline placeholder image using svg -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect rx='10' width='100%' height='100%' fill='%23f8fafc'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='22' fill='%237c93b8'>Sermon</text></svg>" alt="Sermon artwork"/>
+          <div>
+            <h4>Grace That Changes</h4>
+            <div class="small">A short reflection on grace and daily life.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-primary" style="flex:1" onclick="alert('Play sermon (placeholder)')">Listen</button>
+          <button class="btn btn-outline" style="flex:1" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Join us</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID -->
+    <section class="grid" aria-label="Main content">
+      <main>
+        <!-- Beliefs -->
+        <article id="beliefs" class="card" aria-labelledby="beliefs-title">
+          <div class="section-title">
+            <div class="pill" aria-hidden="true">Our Heart</div>
+            <h3 id="beliefs-title">Core Beliefs</h3>
+          </div>
+
+          <div class="beliefs" role="list">
+            <div class="belief" role="listitem">
+              <div class="mark">1</div>
+              <div>
+                <strong>We believe in God the Father, the Son, and the Holy Spirit.</strong>
+                <p class="small" style="margin-top:6px">One God in three persons — creator, redeemer, and sustainer.</p>
+              </div>
+            </div>
+
+            <div class="belief" role="listitem">
+              <div class="mark">2</div>
+              <div>
+                <strong>We believe in the life, death, and resurrection of Jesus Christ.</strong>
+                <p class="small" style="margin-top:6px">Christ's work is the center of our faith and hope.</p>
+              </div>
+            </div>
+
+            <div class="belief" role="listitem">
+              <div class="mark">3</div>
+              <div>
+                <strong>We believe the Bible is God’s Word for guiding faith and life.</strong>
+                <p class="small" style="margin-top:6px">Scripture points us to Christ and equips us for good works.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Practices -->
+        <article class="card" aria-labelledby="practice-title" style="margin-top:18px">
+          <div class="section-title">
+            <h3 id="practice-title">Worship & Practices</h3>
+          </div>
+
+          <p>We gather weekly for worship, prayer, and teaching. We value:</p>
+          <ul>
+            <li><strong>Worship:</strong> reverent and joyful, centered on Christ.</li>
+            <li><strong>Prayer:</strong> personal and communal, seeking God’s guidance.</li>
+            <li><strong>Service:</strong> loving our neighbors in practical ways.</li>
+          </ul>
+
+          <blockquote style="margin:12px 0;padding:12px;border-left:4px solid var(--blue-300);background:rgba(96,165,250,0.04)">
+            "Love one another as I have loved you." — John 13:34
+          </blockquote>
+        </article>
+
+        <!-- Resources -->
+        <article id="resources" class="card" aria-labelledby="resources-title" style="margin-top:18px">
+          <div class="section-title">
+            <h3 id="resources-title">Resources</h3>
+          </div>
+
+          <p class="small">Bible studies, sermon recordings, and recommended readings to help you grow.</p>
+
+          <ul style="margin-top:10px">
+            <li><strong>Weekly Bible Study:</strong> Wednesdays at 7 PM (in-person & online).</li>
+            <li><strong>Sermon Archive:</strong> Listen to past messages (audio available).</li>
+            <li><strong>Reading Plan:</strong> A one-year Bible reading plan for daily reflection.</li>
+          </ul>
+
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <button class="btn btn-primary" onclick="alert('Download reading plan (placeholder)')">Download Plan</button>
+            <button class="btn btn-outline" onclick="alert('Open sermon archive (placeholder)')">Sermon Archive</button>
+          </div>
+        </article>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card" id="community" aria-labelledby="community-title">
+          <div class="section-title">
+            <h3 id="community-title">Community</h3>
+            <div style="margin-left:auto" class="small">Everyone welcome</div>
+          </div>
+
+          <p class="small">We host ministries and groups for all ages:</p>
+          <ul style="margin-top:8px">
+            <li><strong>Kids & Families</strong> — safe, fun learning.</li>
+            <li><strong>Youth Group</strong> — friendship and discipleship.</li>
+            <li><strong>Care Teams</strong> — pastoral visits, counseling referrals.</li>
+          </ul>
+
+          <div style="margin-top:12px">
+            <button class="btn btn-primary" style="width:100%" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Involved</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <div class="section-title">
+            <h3>Support & Giving</h3>
+          </div>
+          <p class="small">If you'd like to support ministry, missions, and local outreach, we make it simple and secure.</p>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn btn-primary" style="flex:1" onclick="alert('Donate (placeholder)')">Give</button>
+            <button class="btn btn-outline" style="flex:1" onclick="alert('Volunteer (placeholder)')">Volunteer</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer>
+      <div id="contact" class="card" style="flex:1" aria-labelledby="contact-title">
+        <div class="section-title">
+          <h3 id="contact-title">Connect</h3>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Thanks! We will reach out (placeholder).');" style="display:grid;gap:8px">
+          <label>
+            <span class="small">Name</span>
+            <input required type="text" name="name" placeholder="Your name" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(17,24,39,0.06)"/>
+          </label>
+
+          <label>
+            <span class="small">Email</span>
+            <input required type="email" name="email" placeholder="you@example.com" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(17,24,39,0.06)"/>
+          </label>
+
+          <label>
+            <span class="small">Message</span>
+            <textarea name="message" rows="2" placeholder="How can we pray or help?" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(17,24,39,0.06)"></textarea>
+          </label>
+
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <button class="btn btn-outline" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div style="min-width:220px; text-align:right">
+        <div style="font-weight:700">Hope &amp; Light</div>
+        <div class="small" style="margin-top:6px">© <span id="year"></span> Hope &amp; Light Church</div>
+
+        <div class="socials" style="margin-top:10px; justify-content:flex-end">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Email">✉︎</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // small interactions and accessibility helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // keyboard focus visible (enhances keyboard users)
+    document.addEventListener('keyup', function(e){
+      if(e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+    });
+
+    // Example: make sure the hero heading has a meaningful announcement for screen readers when loaded
+    window.addEventListener('load', function(){
+      var live = document.createElement('div');
+      live.setAttribute('role','status');
+      live.setAttribute('aria-live','polite');
+      live.style.position='absolute';
+      live.style.left='-9999px';
+      live.textContent = "Welcome to Hope & Light: Following Jesus, serving our neighbors, sharing hope.";
+      document.body.appendChild(live);
+    });
+  </script>
+</body>
+</html>
